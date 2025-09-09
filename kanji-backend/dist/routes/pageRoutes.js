@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+// import { registeration,login} from "../controllers/authController";
+const kanjiController_1 = require("../controllers/kanjiController");
+const userController_1 = require("../controllers/userController");
+const quizController_1 = require("../controllers/quizController");
+const router = (0, express_1.Router)();
+router.post("/sync", userController_1.syncUser);
+router.get("/kanji/:level", kanjiController_1.getKanjis);
+router.get("/quiz/:level/:type", quizController_1.getQuiz);
+exports.default = router;
