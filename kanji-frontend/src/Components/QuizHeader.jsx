@@ -1,3 +1,4 @@
+import { ArrowLeft } from "lucide-react";
 const QuizHeader = ({ selectedLevel, selectedType, resetQuiz, quizStarted }) => {
   if (!quizStarted) {
     return (

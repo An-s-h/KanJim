@@ -1,5 +1,6 @@
 import { CheckCircle, XCircle, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
+import { BookOpen } from "lucide-react";
 
 const AnswerReview = ({ quiz, answers }) => {
   const [expandedQuestion, setExpandedQuestion] = useState(null);

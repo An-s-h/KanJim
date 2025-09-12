@@ -2,7 +2,7 @@ import { BookOpen } from "lucide-react";
 
 const ResultsSummary = ({ score, quiz, getScoreColor, getScoreEmoji }) => {
   return (
-    <div className="text-center mb-8">
+    <div className="text-center mb-8 ">
       <div className="text-8xl mb-6">{getScoreEmoji(score, quiz.length)}</div>
       <h1 className="text-4xl font-bold text-white mb-4">Quiz Complete!</h1>
       <div className={`text-6xl font-bold mb-4 ${getScoreColor(score, quiz.length)}`}>

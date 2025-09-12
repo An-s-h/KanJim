@@ -3,6 +3,7 @@ import Navbar from '../Components/Navbar'
 import HeroSection from '../Components/HeroSection'
 import JapaneseConversationSection from '../Components/JapaneseConversationSection'
 import TransparentFooter from '../Components/TransparentFooter'
+import KanjiStrokeOrder from '../Components/KanjiStrokeOrder'
 
 const Home = () => {
   return (
