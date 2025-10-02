@@ -9,7 +9,6 @@ import AnswerReview from "../Components/AnswerReview";
 import QuizHeader from "../Components/QuizHeader";
 import QuizProgress from "../Components/QuizProgress";
 
-
 const QuizPage = () => {
   const [selectedLevel, setSelectedLevel] = useState("N5");
   const [selectedType, setSelectedType] = useState("mixed");
@@ -26,7 +25,9 @@ const QuizPage = () => {
     setLoading(true);
     setAnimateText(true);
     try {
-      const response = await fetch(`http://localhost:3000/api/v1/quiz/${selectedLevel}/${selectedType}?count=10`);
+      const response = await fetch(
+        `https://kan-jim.vercel.app/api/v1/quiz/${selectedLevel}/${selectedType}?count=10`
+      );
       const data = await response.json();
       setQuiz(data.quiz || []);
       setAnswers({});
@@ -106,11 +107,22 @@ const QuizPage = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 p-6">
         <div className="max-w-6xl mx-auto mt-25">
-          <QuizHeader selectedLevel={selectedLevel} selectedType={selectedType} resetQuiz={resetQuiz} quizStarted={quizStarted} />
-          
-          <LevelSelection selectedLevel={selectedLevel} setSelectedLevel={setSelectedLevel} />
-          
-          <QuizTypeSelection selectedType={selectedType} setSelectedType={setSelectedType} />
+          <QuizHeader
+            selectedLevel={selectedLevel}
+            selectedType={selectedType}
+            resetQuiz={resetQuiz}
+            quizStarted={quizStarted}
+          />
+
+          <LevelSelection
+            selectedLevel={selectedLevel}
+            setSelectedLevel={setSelectedLevel}
+          />
+
+          <QuizTypeSelection
+            selectedType={selectedType}
+            setSelectedType={setSelectedType}
+          />
 
           <div className="text-center">
             <button
@@ -135,8 +147,12 @@ const QuizPage = () => {
             <div className="animate-spin rounded-full h-20 w-20 border-4 border-purple-500/30 border-t-purple-400 mx-auto mb-6"></div>
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 opacity-20 animate-pulse"></div>
           </div>
-          <p className="text-xl text-gray-300">Preparing your quiz questions...</p>
-          <p className="text-purple-400 text-sm mt-2">Get ready to test your kanji knowledge! 🎯</p>
+          <p className="text-xl text-gray-300">
+            Preparing your quiz questions...
+          </p>
+          <p className="text-purple-400 text-sm mt-2">
+            Get ready to test your kanji knowledge! 🎯
+          </p>
         </div>
       </div>
     );
@@ -147,8 +163,13 @@ const QuizPage = () => {
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 p-6 pt-10">
         <div className="max-w-4xl mt-10 mx-auto">
           <div className="bg-gradient-to-br from-purple-500/10 to-indigo-500/10 border border-purple-400/20 rounded-2xl p-8 backdrop-blur-sm mt-10">
-            <ResultsSummary score={score} quiz={quiz} getScoreColor={getScoreColor} getScoreEmoji={getScoreEmoji} />
-            
+            <ResultsSummary
+              score={score}
+              quiz={quiz}
+              getScoreColor={getScoreColor}
+              getScoreEmoji={getScoreEmoji}
+            />
+
             <AnswerReview quiz={quiz} answers={answers} />
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -179,19 +200,24 @@ const QuizPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 p-6">
       <div className="max-w-6xl mx-auto mt-20">
-        <QuizHeader selectedLevel={selectedLevel} selectedType={selectedType} resetQuiz={resetQuiz} quizStarted={quizStarted} />
-        
+        <QuizHeader
+          selectedLevel={selectedLevel}
+          selectedType={selectedType}
+          resetQuiz={resetQuiz}
+          quizStarted={quizStarted}
+        />
+
         <QuizProgress answers={answers} quiz={quiz} />
 
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-1">
-            <QuestionNavigation 
-              quiz={quiz} 
-              currentQuestion={currentQuestion} 
-              setCurrentQuestion={setCurrentQuestion} 
-              answers={answers} 
+            <QuestionNavigation
+              quiz={quiz}
+              currentQuestion={currentQuestion}
+              setCurrentQuestion={setCurrentQuestion}
+              answers={answers}
             />
-            
+
             <div className="bg-gradient-to-br from-purple-500/10 to-indigo-500/10 border border-purple-400/20 rounded-xl p-6 backdrop-blur-sm">
               <h4 className="text-white font-medium mb-4 flex items-center gap-2">
                 <Trophy className="w-5 h-5 text-purple-400" />
@@ -200,26 +226,32 @@ const QuizPage = () => {
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between items-center text-gray-300">
                   <span>Answered</span>
-                  <span className="text-purple-400 font-medium">{Object.keys(answers).length}</span>
+                  <span className="text-purple-400 font-medium">
+                    {Object.keys(answers).length}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center text-gray-300">
                   <span>Remaining</span>
-                  <span className="text-pink-400 font-medium">{quiz.length - Object.keys(answers).length}</span>
+                  <span className="text-pink-400 font-medium">
+                    {quiz.length - Object.keys(answers).length}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center text-gray-300">
                   <span>Level</span>
-                  <span className="text-cyan-400 font-medium">{selectedLevel}</span>
+                  <span className="text-cyan-400 font-medium">
+                    {selectedLevel}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
 
-          <QuestionDisplay 
-            quiz={quiz} 
-            currentQuestion={currentQuestion} 
-            answers={answers} 
-            handleSelect={handleSelect} 
-            animateText={animateText} 
+          <QuestionDisplay
+            quiz={quiz}
+            currentQuestion={currentQuestion}
+            answers={answers}
+            handleSelect={handleSelect}
+            animateText={animateText}
           />
         </div>
 
@@ -235,10 +267,11 @@ const QuizPage = () => {
               }`}
             >
               <Trophy className="w-6 h-6" />
-              {Object.keys(answers).length === quiz.length 
-                ? "Submit Quiz" 
-                : `Answer ${quiz.length - Object.keys(answers).length} more questions`
-              }
+              {Object.keys(answers).length === quiz.length
+                ? "Submit Quiz"
+                : `Answer ${
+                    quiz.length - Object.keys(answers).length
+                  } more questions`}
               {Object.keys(answers).length === quiz.length && (
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400 to-emerald-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               )}
