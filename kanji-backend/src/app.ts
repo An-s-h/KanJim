@@ -7,7 +7,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://kan-jim-pq8n.vercel.app",
+    origin: [
+      "https://kan-jim-pq8n.vercel.app",
+      "https://kanjim.ansh.pw"
+    ],
     credentials: true,
   })
 );
