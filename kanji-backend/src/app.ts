@@ -9,7 +9,7 @@ app.use(
   cors({
     origin: [
       "https://kan-jim-pq8n.vercel.app",
-      "https://kanjim.ansh.pw"
+      "https://kanzen.ansh.pw"
     ],
     credentials: true,
   })
