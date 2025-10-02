@@ -1,22 +1,23 @@
-import express from "express"
-import router from "./routes/pageRoutes";
-import dbConnect from "./config/db";
+import express from "express";
+import router from "./routes/pageRoutes.js";
+import dbConnect from "./config/db.js";
 import cors from "cors";
-// import { seedKanji } from "./seedKanji";
 
-const app=express();
+const app = express();
+
 app.use(
   cors({
-    origin: "http://localhost:5173", // frontend origin
-    credentials: true, // allow cookies/headers (needed for Clerk)
+    origin: "http://localhost:5173",
+    credentials: true,
   })
 );
+
 app.use(express.json());
-app.use(express.urlencoded({ extended: true}))
+app.use(express.urlencoded({ extended: true }));
+
 dbConnect();
 
-app.use("/api/v1",router);
+app.use("/api/v1", router);
 
-app.listen(3000,()=>{
-  console.log(`Server is runing on 3000`)
-})
+
+export default app;
