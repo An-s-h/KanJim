@@ -76,7 +76,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       {menuOpen && (
-        <div className=" absolute z-50 top-full mt-2 right-4 w-56 rounded-xl bg-white/10 backdrop-blur-xl shadow-2xl border border-white/20 p-4 flex flex-col gap-3 text-sm">
+        <div className=" absolute z-50 top-full mt-2 right-4 w-56 rounded-xl bg-gradient-to-r from-pink-400 to-purple-400 border backdrop-blur-xl shadow-2xl border-white/20 p-4 flex flex-col gap-3 text-sm">
           <Link
             to="/"
             onClick={() => setMenuOpen(false)}
