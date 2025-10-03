@@ -35,6 +35,7 @@ createRoot(document.getElementById("root")).render(
           />
           <Route path="/learn/:level" element={<LearnPage />} />
           <Route path="/quiz" element={<QuizPage/>}/>
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </ClerkProvider>
     </BrowserRouter>
