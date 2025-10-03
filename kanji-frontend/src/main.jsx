@@ -14,6 +14,7 @@ const clerkKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 import { dark ,shadesOfPurple} from '@clerk/themes'
 import QuizPage from "./Pages/QuizPage.jsx";
 import LearnPage from "./Pages/LearnPage.jsx";
+import { Navigate } from "react-router";
 
 createRoot(document.getElementById("root")).render(
     <BrowserRouter>
